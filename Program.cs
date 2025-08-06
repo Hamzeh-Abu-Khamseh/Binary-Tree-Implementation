@@ -131,6 +131,30 @@ public class  BinaryTree<T>
         InOrderTraversal(Root);
         Console.WriteLine();
     }
+
+    public void LevelOrderTraversal()
+    {
+        if (Root == null) return;
+
+        Queue<BinaryTreeNode<T>> queue = new Queue<BinaryTreeNode<T>>();
+        queue.Enqueue(Root);
+
+        while (queue.Count > 0)
+        {
+            BinaryTreeNode<T> current = queue.Dequeue();
+            Console.Write(current.Value + " ");
+
+            if (current.Left != null)
+            {
+                queue.Enqueue(current.Left);
+            }
+            if (current.Right != null)
+            {
+                queue.Enqueue(current.Right);
+            }
+
+        }
+    }
 }
 
 public class Program
@@ -156,6 +180,9 @@ public class Program
 
         Console.WriteLine("InOrder Traversal of the tree:");
         tree.InOrderTraversal();
+
+        Console.WriteLine("LevelOrder Traversal of the tree:");
+        tree.LevelOrderTraversal();
 
 
     }
